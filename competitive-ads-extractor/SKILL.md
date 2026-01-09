@@ -121,11 +121,24 @@ Every ad is auto-tagged into one of 8 strategic categories:
 "What offers appear on [Competitor]'s landing pages?"
 ```
 
-### Screenshots
+### Screenshots & Visual Capture
 ```
 "Capture screenshots of [Competitor]'s ads"
 "Screenshot [Competitor]'s Meta ad library"
 "Save visual samples of [Competitor]'s ads"
+"Take screenshots of [Competitor]'s top ads"
+"Capture [Competitor]'s ad creative for the report"
+"Screenshot each platform for [Competitor]"
+```
+
+### Reports with Screenshots (Word/PowerPoint)
+```
+"Create a competitive report with screenshots for [Competitor]"
+"Build a Word doc with [Competitor]'s ad screenshots"
+"Generate a PowerPoint of [Competitor]'s advertising"
+"Make a visual competitive analysis with ad screenshots"
+"Create a presentation deck of [Competitor]'s ads"
+"Export [Competitor] analysis to Word with images"
 ```
 
 ### Executive Summaries
@@ -241,6 +254,68 @@ CTA: Get Started Free
 marketing automation. Here's how."
 CTA: Read Case Study
 ```
+
+---
+
+## Screenshots & Report Generation
+
+### What Gets Captured
+- **Ad Library Pages** — Full-page screenshots of Meta, TikTok, Google, LinkedIn ad libraries
+- **Individual Ads** — Specific ad creative samples for reference
+- **Landing Pages** — Screenshots of competitor landing pages
+- **Organized by Platform** — Screenshots saved with platform name and timestamp
+
+### Screenshot Organization
+```
+/screenshots/
+├── meta-ads-2024-01-15.png
+├── meta-ad-sample-1.png
+├── meta-ad-sample-2.png
+├── tiktok-ads-2024-01-15.png
+├── tiktok-ad-sample-1.png
+├── google-ads-2024-01-15.png
+└── landing-page-homepage.png
+```
+
+### Report Outputs
+
+**Word Document (.docx)**
+- Executive summary with key findings
+- Screenshots embedded inline
+- Creative mix charts
+- Sample ad copy by category
+- Strategic recommendations
+
+**PowerPoint (.pptx)**
+- Title slide with competitor name
+- Platform overview with ad counts
+- Screenshot slides for each platform
+- Creative mix breakdown
+- Key opportunities slide
+- Recommended actions slide
+
+### Report Prompts
+```
+"Create a Word report on [Competitor] with screenshots"
+"Build a PowerPoint deck of [Competitor]'s ads"
+"Generate a visual competitive report for stakeholders"
+"Make a client-ready presentation of [Competitor]'s advertising"
+"Export full analysis with screenshots to Word"
+"Create a slide deck showing [Competitor]'s ad strategy"
+```
+
+### What's Included in Reports
+
+| Section | Word | PowerPoint |
+|---------|------|------------|
+| Executive Summary | ✅ | ✅ |
+| Platform Screenshots | ✅ Embedded | ✅ Full slides |
+| Ad Copy Samples | ✅ | ✅ |
+| Creative Mix Chart | ✅ | ✅ |
+| Targeting Data | ✅ | ✅ |
+| Landing Page Analysis | ✅ | ✅ |
+| Gap Analysis | ✅ | ✅ |
+| Recommendations | ✅ | ✅ |
 
 ---
 

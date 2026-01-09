@@ -274,10 +274,10 @@ Video hooks are categorized by opening strategy:
     bold_claim: [/changed my life|game.?changer|finally|the secret|you need|must have|#1|best/i],
     problem: [/^(tired of|sick of|struggling|stop|don't|can't stand|hate when)/i],
     result_first: [/^(before|after|results|transformation|went from|lost \d+|gained \d+)/i],
-    pattern_interrupt: [/^(wait|stop|hold on|pov:|ok but|no way)/i],
+    pattern_interrupt: [/^(stop\s+\w|hold on|pov:|ok but|no way)/i, /^wait[^f]/i],
     social_proof: [/viral|million|views|everyone|trending|famous|went viral/i],
     direct_address: [/^(hey|attention|calling all|if you're a|this is for)/i],
-    curiosity_gap: [/wait for it|you won't believe|secret|hack|trick|nobody knows/i]
+    curiosity_gap: [/wait for it|you won't believe|secret|hack|trick|nobody knows/i, /^wait\s*for/i]
   };
 
   // Video format patterns

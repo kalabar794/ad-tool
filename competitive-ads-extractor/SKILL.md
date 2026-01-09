@@ -1,6 +1,6 @@
 ---
 name: competitive-ads-extractor
-description: Extract and analyze competitor ads from Meta Ad Library, TikTok Ad Library, Google Ads Transparency Center, and LinkedIn Ad Library. Full support for ad copy extraction, creative categorization, targeting data, reach metrics, visual screenshots, landing page analysis, and executive summary generation.
+description: Extract competitor ads from Meta, TikTok, Google, and LinkedIn Ad Libraries. Analyze ad copy, targeting, creative categories, landing pages, and generate reports with screenshots.
 ---
 
 # Competitive Ads Extractor

@@ -1,124 +1,134 @@
-# WEO Ad Tool - Competitive Ads Extractor
+# WEO Ad Tool - Competitive Ads Extractor v3.3
 
-A Claude Desktop skill for extracting competitor ads from Meta, TikTok, Google, and LinkedIn Ad Libraries.
-
-## Setup
-
-1. Download this repository
-2. Copy `competitive-ads-extractor.md` to your Claude Desktop skills folder:
-   - **Mac**: `~/.claude/skills/`
-   - **Windows**: `%APPDATA%\Claude\skills\`
-3. Restart Claude Desktop
+**See exactly what your competitors are running.** Extract ads from Meta, TikTok, Google, and LinkedIn in seconds.
 
 ---
 
-## What This Skill Can Do
+## Install
 
-### Platforms Supported
-- **Meta** (Facebook & Instagram ads)
-- **TikTok** (TikTok Ad Library)
-- **Google** (Google Ads Transparency Center)
-- **LinkedIn** (LinkedIn Ad Library)
+1. Download `competitive-ads-extractor.zip` from [Releases](../../releases)
+2. In Claude Desktop: **Settings → Capabilities → Skills → Upload skill**
+3. Select the zip file
 
-### Extraction Capabilities
-- Pull all active ads from a competitor
-- Extract ad copy/text and messaging
-- Capture CTAs (Shop Now, Learn More, etc.)
-- Get targeting data (age, gender, location)
-- Find video URLs and creative assets
-- Extract landing page URLs
+That's it. Start asking.
 
-### Analysis Features
-- **Ad Categorization** - Auto-tag ads as promotional, testimonial, educational, brand awareness, urgency, problem/solution, or comparison
-- **Messaging Analysis** - Identify top keywords, phrases, and themes
-- **CTA Patterns** - See which calls-to-action competitors use most
-- **Creative Mix** - Breakdown of ad types (% promo vs % testimonial, etc.)
-- **Landing Page Analysis** - Analyze where competitors send traffic
+---
 
-### Reporting
-- Executive summary 1-pagers
-- Platform-by-platform breakdowns
+## What You Can Do
+
+| Ask Claude... | Get... |
+|---------------|--------|
+| *"What ads is Nike running on Meta?"* | Every active ad with copy, CTAs, and targeting |
+| *"Analyze Competitor's TikTok strategy"* | Full breakdown of their video ads and messaging |
+| *"Compare Company A vs Company B"* | Side-by-side competitive analysis |
+| *"Create an executive summary"* | 1-page stakeholder-ready report |
+
+---
+
+## Capabilities
+
+### Extract From 4 Platforms
+- **Meta** — Facebook & Instagram ads
+- **TikTok** — TikTok Ad Library
+- **Google** — Google Ads Transparency Center
+- **LinkedIn** — LinkedIn Ad Library
+
+### Pull Everything
+- Ad copy and messaging
+- Headlines and descriptions
+- CTAs (Shop Now, Learn More, Book Now...)
+- Targeting data (age, gender, location)
+- Video URLs and creative assets
+- Landing page destinations
+
+### Auto-Categorize Ads
+Every ad gets tagged:
+- Promotional / Discount
+- Testimonial / Social Proof
+- Educational / How-to
+- Brand Awareness
+- Urgency / Scarcity
+- Problem / Solution
+- Comparison
+
+### Analyze Messaging
+- Top keywords and phrases
+- CTA patterns
+- Offer types
+- Creative mix breakdown
+
+### Generate Reports
+- Executive summaries
 - Competitive gap analysis
 - Strategic recommendations
+- Platform comparisons
 
 ---
 
-## Optimal Prompts
+## Prompts That Work
 
-### Quick Scans
+**Quick looks:**
 ```
 "Quick scan of [Competitor]'s ads"
-"What ads is [Competitor] running on Meta?"
-"Show me [Competitor]'s TikTok ads"
+"What's [Competitor] running on Meta?"
 ```
 
-### Deep Analysis
+**Deep dives:**
 ```
-"Deep dive on [Competitor]'s ad strategy across all platforms"
-"Full competitive analysis of [Competitor]'s advertising"
-"Analyze [Competitor]'s messaging and creative strategy"
+"Full analysis of [Competitor]'s ad strategy"
+"Deep dive on [Competitor] across all platforms"
 ```
 
-### Specific Insights
+**Specific questions:**
 ```
-"What CTAs is [Competitor] using most?"
+"What CTAs does [Competitor] use most?"
 "Show me [Competitor]'s testimonial ads"
 "What offers is [Competitor] promoting?"
-"What landing pages is [Competitor] driving traffic to?"
+"Where does [Competitor] send their ad traffic?"
 ```
 
-### Comparisons
+**Comparisons:**
 ```
-"Compare [Competitor A] vs [Competitor B] ad strategies"
-"How does [Competitor]'s Meta strategy differ from their TikTok?"
-```
-
-### Executive Reports
-```
-"Create an executive summary of [Competitor]'s ads"
-"Generate a 1-page competitive brief for [Competitor]"
-"What are the top 3 opportunities vs [Competitor]?"
+"Compare [Company A] vs [Company B] ads"
+"How does [Competitor]'s Meta differ from TikTok?"
 ```
 
-### By Platform
+**Reports:**
 ```
-"Extract all [Competitor] ads from Meta Ad Library"
-"Get [Competitor]'s Google Ads"
-"Pull [Competitor]'s TikTok ad library"
-"Find [Competitor] on LinkedIn Ad Library"
-```
-
-### By Ad Type
-```
-"Show me [Competitor]'s promotional/discount ads"
-"Find [Competitor]'s testimonial and review ads"
-"What educational content is [Competitor] running?"
+"Executive summary of [Competitor]'s advertising"
+"Top 3 opportunities against [Competitor]"
 ```
 
 ---
 
-## Example Output
+## What You Get Back
 
-When you ask for a competitive analysis, you'll get:
+```
+Competitor: Acme Corp
+Platforms: Meta (47 ads), TikTok (23 ads), Google (31 ads)
 
-- **Ad Count** - Total ads per platform
-- **Top Messages** - Most common words and phrases
-- **Creative Mix** - % breakdown by ad type
-- **CTA Strategy** - Which buttons they use
-- **Offers** - Discounts, free trials, promotions
-- **Gaps** - What they're NOT doing (your opportunities)
+Creative Mix:
+- 40% Promotional
+- 28% Testimonial
+- 18% Educational
+- 14% Brand
+
+Top CTAs: "Shop Now" (34%), "Learn More" (28%), "Get Started" (19%)
+
+Top Keywords: free, limited, exclusive, transform, results
+
+Gaps (Your Opportunities):
+- No TikTok presence
+- No comparison ads
+- Limited urgency messaging
+```
 
 ---
 
-## Usage
+## Requirements
 
-Just ask Claude. No coding required.
-
-```
-"Extract ads from Nike on Meta"
-```
-
-Claude handles everything automatically.
+- Claude Desktop (Pro, Max, Team, or Enterprise)
+- Code execution enabled in Settings
 
 ---
 

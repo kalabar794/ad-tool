@@ -1,6 +1,6 @@
 # WEO Ad Tool - Competitive Ads Extractor v3.3
 
-**See exactly what your competitors are running.** Extract ads from Meta, TikTok, Google, and LinkedIn in seconds.
+**Enterprise-grade competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with full ad copy extraction, creative categorization, landing page analysis, and executive-ready reports.
 
 ---
 
@@ -14,113 +14,187 @@ That's it. Start asking.
 
 ---
 
+## What's New in v3.3
+
+- **Executive Summary 1-Pager** — Auto-generate stakeholder-ready reports with key findings and recommendations
+- **Landing Page Analysis** — Extract CTAs, forms, trust signals, and conversion elements from competitor landing pages
+- **Ad Copy Extraction** — Pull actual headlines, body text, CTAs, and hashtags from ads
+- **Creative Categorization** — Auto-tag every ad into 8 strategic categories
+- **Copy Analysis** — Word frequency, CTA patterns, and messaging theme detection
+- **Visual Screenshots** — Capture ad library pages for documentation and reports
+
+---
+
+## Platform Support
+
+| Platform | Ad Copy | Categories | Targeting | Screenshots | Landing Pages |
+|----------|---------|------------|-----------|-------------|---------------|
+| **Meta** | ✅ Full | ✅ Auto | ⚠️ Limited | ✅ | ✅ |
+| **TikTok** | ✅ Full | ✅ Auto | ✅ Full | ✅ | ✅ |
+| **Google** | ✅ Full | ✅ Auto | ⚠️ Region | ✅ | ✅ |
+| **LinkedIn** | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial | ✅ | ⚠️ |
+
+---
+
 ## What You Can Do
 
 | Ask Claude... | Get... |
 |---------------|--------|
 | *"What ads is Nike running on Meta?"* | Every active ad with copy, CTAs, and targeting |
-| *"Analyze Competitor's TikTok strategy"* | Full breakdown of their video ads and messaging |
-| *"Compare Company A vs Company B"* | Side-by-side competitive analysis |
-| *"Create an executive summary"* | 1-page stakeholder-ready report |
+| *"Analyze HubSpot's TikTok strategy"* | Full breakdown of video ads, messaging, and reach |
+| *"Compare Salesforce vs HubSpot ads"* | Side-by-side competitive analysis |
+| *"Create an executive summary"* | 1-page stakeholder-ready PDF/DOCX report |
+| *"Analyze competitor's landing pages"* | CTAs, forms, trust signals, conversion elements |
+| *"What's their creative mix?"* | Category breakdown (testimonial, promo, educational...) |
 
 ---
 
 ## Capabilities
 
 ### Extract From 4 Platforms
-- **Meta** — Facebook & Instagram ads
-- **TikTok** — TikTok Ad Library
-- **Google** — Google Ads Transparency Center
-- **LinkedIn** — LinkedIn Ad Library
+- **Meta** — Facebook & Instagram ads with full copy
+- **TikTok** — Ad Library with targeting data and reach metrics
+- **Google** — Ads Transparency Center with headlines and descriptions
+- **LinkedIn** — Ad Library (requires login)
 
 ### Pull Everything
-- Ad copy and messaging
-- Headlines and descriptions
+- Ad copy (headlines, body text, descriptions)
 - CTAs (Shop Now, Learn More, Book Now...)
+- Hashtags and @mentions
 - Targeting data (age, gender, location)
-- Video URLs and creative assets
+- Video URLs and creative assets (TikTok)
 - Landing page destinations
 
-### Auto-Categorize Ads
-Every ad gets tagged:
-- Promotional / Discount
-- Testimonial / Social Proof
-- Educational / How-to
-- Brand Awareness
-- Urgency / Scarcity
-- Problem / Solution
-- Comparison
+### Auto-Categorize Ads (8 Categories)
+| Category | What It Captures |
+|----------|------------------|
+| **Testimonial** | Reviews, social proof, customer stories |
+| **Offer/Promo** | Discounts, deals, limited-time offers |
+| **Educational** | How-to, tips, guides |
+| **Brand Awareness** | Company story, values, mission |
+| **Product Feature** | Benefits, specs, capabilities |
+| **Urgency/Scarcity** | Time pressure, limited availability |
+| **Problem/Solution** | Pain points and resolutions |
+| **Comparison** | Us vs them, competitor callouts |
 
 ### Analyze Messaging
-- Top keywords and phrases
-- CTA patterns
-- Offer types
+- Top keywords and phrases (word frequency)
+- CTA patterns and distribution
+- Messaging themes and angles
 - Creative mix breakdown
 
+### Landing Page Analysis
+- Page headlines (H1, H2, H3)
+- Primary and secondary CTAs
+- Form fields and friction level
+- Trust signals (reviews, badges, guarantees)
+- Offers (pricing, discounts, free trials)
+- Page features (video, chat widget, testimonials)
+
 ### Generate Reports
-- Executive summaries
-- Competitive gap analysis
-- Strategic recommendations
-- Platform comparisons
+- **Executive Summary** — 1-page stakeholder-ready brief
+- **Word Documents** — Full analysis with embedded screenshots
+- **PowerPoint Decks** — Visual presentations for clients
+- **Gap Analysis** — Strategic opportunities vs competitor
+- **JSON Output** — Structured data for further analysis
 
 ---
 
 ## Prompts That Work
 
-**Quick looks:**
+### Quick Extraction
 ```
-"Quick scan of [Competitor]'s ads"
-"What's [Competitor] running on Meta?"
+"Extract [Competitor]'s ads from Meta"
+"What ads is [Competitor] running?"
+"Quick scan of [Competitor]'s advertising"
 ```
 
-**Deep dives:**
+### Deep Analysis
 ```
-"Full analysis of [Competitor]'s ad strategy"
+"Full competitive analysis of [Competitor]'s advertising"
 "Deep dive on [Competitor] across all platforms"
+"What messaging is [Competitor] using?"
 ```
 
-**Specific questions:**
+### Ad Copy & Categories
 ```
-"What CTAs does [Competitor] use most?"
+"What headlines is [Competitor] testing?"
 "Show me [Competitor]'s testimonial ads"
-"What offers is [Competitor] promoting?"
-"Where does [Competitor] send their ad traffic?"
+"What percentage of ads are promotional?"
+"What's [Competitor]'s creative mix?"
 ```
 
-**Comparisons:**
+### Targeting & Reach
+```
+"Who is [Competitor] targeting on TikTok?"
+"What demographics does [Competitor] reach?"
+"What age groups is [Competitor] targeting?"
+```
+
+### Landing Pages
+```
+"Analyze [Competitor]'s landing pages"
+"What CTAs are on [Competitor]'s landing pages?"
+"What trust signals does [Competitor] use?"
+"How many form fields does [Competitor] require?"
+```
+
+### Screenshots & Reports
+```
+"Capture screenshots of [Competitor]'s ads"
+"Create a Word report with screenshots"
+"Generate a PowerPoint of [Competitor]'s advertising"
+"Create an executive summary for stakeholders"
+```
+
+### Comparisons & Gaps
 ```
 "Compare [Company A] vs [Company B] ads"
-"How does [Competitor]'s Meta differ from TikTok?"
-```
-
-**Reports:**
-```
-"Executive summary of [Competitor]'s advertising"
-"Top 3 opportunities against [Competitor]"
+"What is [Competitor] NOT doing?"
+"Find gaps in [Competitor]'s ad strategy"
+"What messaging angles is [Competitor] missing?"
 ```
 
 ---
 
-## What You Get Back
+## Example Output
 
 ```
-Competitor: Acme Corp
-Platforms: Meta (47 ads), TikTok (23 ads), Google (31 ads)
+HUBSPOT COMPETITIVE AD ANALYSIS
+===============================
 
-Creative Mix:
-- 40% Promotional
-- 28% Testimonial
-- 18% Educational
-- 14% Brand
+PLATFORM PRESENCE
+-----------------
+• Meta: 156 active ads
+• TikTok: 43 active ads
+• Google: 89 active ads
+• LinkedIn: 12 active ads
 
-Top CTAs: "Shop Now" (34%), "Learn More" (28%), "Get Started" (19%)
+CREATIVE MIX
+------------
+• Educational: 42%
+• Product Feature: 28%
+• Testimonial: 15%
+• Offer/Promo: 10%
+• Brand Awareness: 5%
 
-Top Keywords: free, limited, exclusive, transform, results
+TOP MESSAGING THEMES
+--------------------
+1. "Free CRM" (34% of ads)
+2. "All-in-one platform" (28%)
+3. "Grow better" (22%)
 
-Gaps (Your Opportunities):
-- No TikTok presence
-- No comparison ads
-- Limited urgency messaging
+DOMINANT CTAs
+-------------
+• "Get started free" - 45%
+• "Start free trial" - 25%
+• "Learn more" - 18%
+
+COMPETITIVE GAPS (OPPORTUNITIES)
+--------------------------------
+✗ No urgency/scarcity messaging
+✗ No comparison ads
+✗ Limited video testimonials
 ```
 
 ---
@@ -128,7 +202,45 @@ Gaps (Your Opportunities):
 ## Requirements
 
 - Claude Desktop (Pro, Max, Team, or Enterprise)
-- Code execution enabled in Settings
+- Code execution enabled in Settings → Capabilities
+- For Chrome automation: View → Developer → Allow JavaScript from Apple Events
+- For LinkedIn: Log into LinkedIn in Chrome first
+
+---
+
+## Technical Details
+
+### CLI Tool (Optional)
+This repo also includes a Node.js CLI tool for programmatic extraction:
+
+```bash
+npm install
+node src/cli.js extract "https://example.com" --format json
+node src/cli.js analyze "Your ad copy text here"
+```
+
+### Security
+- SSRF protection (blocks internal/private IPs)
+- Path traversal protection
+- Input validation on all URLs
+
+---
+
+## Files in This Repo
+
+```
+├── competitive-ads-extractor/
+│   └── SKILL.md              # Claude Desktop skill (v3.3)
+├── competitive-ads-extractor.zip  # Ready to upload
+├── src/
+│   ├── index.js              # Main module
+│   ├── extractor.js          # Ad extraction logic
+│   ├── analyzer.js           # Analysis features
+│   ├── utils.js              # Utilities
+│   └── cli.js                # Command-line interface
+├── SECURITY.md               # Security documentation
+└── README.md                 # This file
+```
 
 ---
 

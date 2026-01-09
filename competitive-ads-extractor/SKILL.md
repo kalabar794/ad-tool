@@ -3,52 +3,57 @@ name: competitive-ads-extractor
 description: Extract competitor ads from Meta, TikTok, Google, and LinkedIn Ad Libraries. Analyze ad copy, targeting, creative categories, landing pages, and generate reports with screenshots.
 ---
 
-# Competitive Ads Extractor
+# Competitive Ads Extractor v3.3
 
-Uncover what your competitors are saying, showing, and selling. Extract ads from major ad libraries and get complete competitive intelligence—ad copy, creative categories, targeting data, reach metrics, landing pages, and executive-ready reports.
+**Enterprise-grade multi-platform competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with **ad copy extraction**, **creative categorization**, **landing page analysis**, **executive summaries**, targeting analysis, visual screenshots, and comprehensive reporting.
 
-## When to Use This Skill
+## What's New in v3.3
+- **Executive Summary 1-Pager** - Auto-generate executive-ready PDF/DOCX summaries with key findings, strategic recommendations, and visual charts
+- **Landing Page Analysis** - Extract and analyze competitor landing pages linked from ads (headlines, CTAs, offers, page structure, conversion elements)
+- **Cross-Platform Landing Page Patterns** - Identify where competitors send traffic and what conversion strategies they use
+- **Executive-Ready Outputs** - Professional 1-page summaries suitable for stakeholder presentations
 
-- Research competitor advertising before launching a campaign
-- Build a swipe file of competitor ad copy and creative
-- Analyze messaging themes and angles competitors are testing
-- Understand targeting strategies (who they're reaching)
-- See which landing pages convert their ad traffic
-- Generate competitive reports for stakeholders
-- Identify gaps in competitor strategy you can exploit
-- Monitor competitor ad activity over time
+## What's in v3.2
+- **Ad Copy Extraction** - Pull actual text/copy from ads for messaging analysis
+- **Creative Categorization** - Auto-tag ads by type (testimonial, offer, educational, brand)
+- **Messaging Theme Detection** - Identify common angles and hooks across competitor ads
+- **Copy Analysis Reports** - Word frequency, CTA patterns, emotional triggers
 
-## What This Skill Does
+## What's in v3.1
+- Screenshot Capture - Capture visual samples of competitor ads for reports
+- AppleScript Screenshot Integration - Native macOS screenshot via Chrome automation
+- Automatic Screenshot Organization - Screenshots saved per platform with timestamps
+- Report Visual Integration - Include ad screenshots in final DOCX/PPTX reports
 
-### Core Extraction
-1. **Ad Copy Extraction** — Pull headlines, body text, descriptions, CTAs, and hashtags
-2. **Creative Categorization** — Auto-tag every ad by type (8 categories)
-3. **Targeting Data** — Extract age, gender, location, and audience targeting
-4. **Reach Metrics** — Get impression counts and unique user reach (TikTok)
-5. **Video URLs** — Direct links to TikTok ad videos and cover images
-6. **Destination URLs** — Capture all landing page links from ads
-
-### Analysis
-7. **Messaging Analysis** — Top keywords, phrases, and themes
-8. **CTA Patterns** — Which calls-to-action appear most often
-9. **Creative Mix** — Percentage breakdown by ad category
-10. **Landing Page Analysis** — Headlines, forms, trust signals, offers
-
-### Reporting
-11. **Executive Summaries** — 1-page stakeholder-ready reports
-12. **Visual Screenshots** — Capture ad library pages for documentation
-13. **Gap Analysis** — Identify what competitors are NOT doing
+## What's in v3.0
+- Full TikTok Ad Library Support - Search by advertiser name/keyword, extract ad details, video URLs, targeting data, reach metrics
+- TikTok Ad Detail Pages - Deep extraction of targeting (age, gender, country), audience size, advertiser info
+- Video Asset URLs - Direct links to TikTok ad videos and cover images
+- Quick Mode vs Deep Dive Mode - Choose analysis depth based on needs
+- Enhanced Destination URL Extraction - Systematically capture all ad landing pages
 
 ---
 
-## Platform Support
+## Prerequisites
 
-| Platform | Ad Copy | Categories | Targeting | Reach | Video URLs | Landing Pages |
-|----------|---------|------------|-----------|-------|------------|---------------|
-| **Meta** | ✅ Full | ✅ Auto | ⚠️ Limited | ❌ | ❌ | ✅ |
-| **TikTok** | ✅ Full | ✅ Auto | ✅ Full | ✅ Full | ✅ Direct | ✅ |
-| **Google** | ✅ Full | ✅ Auto | ⚠️ Region | ❌ | ❌ | ✅ |
-| **LinkedIn** | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial | ❌ | ❌ | ⚠️ |
+**CRITICAL**: Enable JavaScript access in Chrome before using:
+1. Open Chrome
+2. Go to **View → Developer → Allow JavaScript from Apple Events**
+
+Without this, you'll get "Google Chrome is not running" errors.
+
+**For LinkedIn**: Log into LinkedIn in Chrome first. The Ad Library often fails to load.
+
+---
+
+## Platform Support Matrix
+
+| Platform | Ad Copy | Categorization | Screenshots | Targeting | Video URLs | Landing Pages |
+|----------|---------|----------------|-------------|-----------|------------|---------------|
+| **Meta Ad Library** | ✅ Full text | ✅ Auto-tagged | ✅ Full page | ⚠️ Limited | ❌ Embedded | ✅ Extract |
+| **TikTok Ad Library** | ✅ Captions | ✅ Auto-tagged | ✅ Full page | ✅ Full | ✅ Direct | ✅ Extract |
+| **Google Ads** | ✅ Headlines/Desc | ✅ Auto-tagged | ✅ Full page | ⚠️ Region | ❌ Preview | ✅ Extract |
+| **LinkedIn** | ⚠️ When available | ⚠️ When available | ✅ Full page | ⚠️ When available | ❌ No | ⚠️ Limited |
 
 ---
 
@@ -56,16 +61,416 @@ Uncover what your competitors are saying, showing, and selling. Extract ads from
 
 Every ad is auto-tagged into one of 8 strategic categories:
 
-| Category | What It Captures | Signal Patterns |
-|----------|------------------|-----------------|
-| **Testimonial** | Reviews, social proof, customer stories | "I love", "★★★★★", "customers say", quoted text |
-| **Offer/Promo** | Discounts, deals, limited-time offers | "% off", "save $", "free", "limited time", "BOGO" |
-| **Educational** | How-to, tips, guides, informational | "how to", "tips", "guide", "learn", "did you know" |
-| **Brand Awareness** | Company story, values, mission | "our story", "about us", "since [year]", "our mission" |
-| **Product Feature** | Benefits, specs, capabilities | "features", "benefits", "powered by", "introducing" |
-| **Urgency/Scarcity** | Time pressure, limited availability | "ends soon", "last chance", "only X left", "hurry" |
-| **Problem/Solution** | Pain points and resolutions | "tired of", "finally", "say goodbye to", "solution" |
-| **Comparison** | Us vs them, competitor callouts | "vs", "compared to", "better than", "switch from" |
+| Category | Description | Signal Words/Patterns |
+|----------|-------------|----------------------|
+| **Testimonial** | Social proof, reviews, customer stories | "I love", "★★★★★", "customers say", quoted text, names with quotes |
+| **Offer/Promo** | Discounts, limited time, special deals | "% off", "save $", "free", "limited time", "deal", "discount", "BOGO" |
+| **Educational** | How-to, tips, informational content | "how to", "tips", "guide", "learn", "discover", "did you know" |
+| **Brand Awareness** | Company story, values, mission | "about us", "our story", "mission", "values", "since [year]" |
+| **Product Feature** | Specific product benefits, specs | "features", "benefits", "includes", "powered by", "introducing" |
+| **Urgency/Scarcity** | Time pressure, limited availability | "ends soon", "last chance", "only X left", "today only", "hurry" |
+| **Problem/Solution** | Pain point + resolution | "tired of", "struggling with", "finally", "say goodbye to", "solution" |
+| **Comparison** | Us vs them, competitor callouts | "vs", "compared to", "unlike", "better than", "switch from" |
+
+---
+
+## JavaScript Extraction Scripts
+
+### Meta Ad Copy Extraction Script
+
+```javascript
+// Meta Ad Library - Full Copy + Categorization Extraction
+(function() {
+  const categoryPatterns = {
+    testimonial: [/testimonial|review|customer/i, /★{3,}/, /"[^"]{20,}"/, /\blove\b/i, /\d+\+?\s*happy/i],
+    offer_promo: [/\d+%\s*off/i, /save\s*\$?\d+/i, /\bfree\b/i, /limited time|special|deal|discount/i],
+    educational: [/\bhow to\b/i, /\d+\s*(tips|ways|steps|secrets)/i, /guide|learn|discover/i],
+    brand_awareness: [/our story|about us|since\s*(19|20)\d{2}/i, /family.?owned|mission/i],
+    product_feature: [/features?|benefits?|includes/i, /powered by|made with|technology/i],
+    urgency_scarcity: [/ends?\s*soon|last\s*chance|limited/i, /today only|hurry|don't miss/i],
+    problem_solution: [/tired of|struggling|finally|say goodbye/i, /solution|solve|no more/i],
+    comparison: [/\bvs\.?\b/i, /compared to|unlike|better than|switch from/i]
+  };
+
+  function categorize(text) {
+    let maxScore = 0, primary = 'uncategorized';
+    const scores = {};
+    Object.entries(categoryPatterns).forEach(([cat, patterns]) => {
+      let score = 0;
+      patterns.forEach(p => { if (p.test(text)) score++; });
+      scores[cat] = score;
+      if (score > maxScore) { maxScore = score; primary = cat; }
+    });
+    return { primary, scores, confidence: maxScore > 1 ? 'high' : maxScore > 0 ? 'medium' : 'low' };
+  }
+
+  const ads = [];
+  const seen = new Set();
+
+  document.querySelectorAll('div').forEach(el => {
+    const text = el.innerText;
+    if (text.length < 50 || text.length > 3000) return;
+    if (!text.includes('Active') && !text.includes('Started running')) return;
+
+    const sig = text.substring(0, 200);
+    if (seen.has(sig)) return;
+    seen.add(sig);
+
+    const lines = text.split('\n').filter(l => l.trim().length > 10);
+    const primaryText = lines.filter(l => l.length > 30).sort((a,b) => b.length - a.length)[0] || '';
+    const ctaMatch = text.match(/(?:Shop Now|Learn More|Sign Up|Book Now|Get Offer|Contact Us|Download|Apply Now|Get Started)/gi);
+    const hashtags = text.match(/#\w+/g) || [];
+    const category = categorize(text);
+
+    ads.push({
+      primaryText: primaryText.substring(0, 500),
+      cta: ctaMatch ? ctaMatch[0] : '',
+      hashtags: [...new Set(hashtags)],
+      category: category.primary,
+      categoryConfidence: category.confidence,
+      allCategoryScores: category.scores
+    });
+  });
+
+  const categoryCounts = {};
+  ads.forEach(a => { categoryCounts[a.category] = (categoryCounts[a.category] || 0) + 1; });
+
+  return JSON.stringify({
+    extractedAt: new Date().toISOString(),
+    platform: 'Meta',
+    totalAds: ads.length,
+    categorySummary: categoryCounts,
+    ads: ads
+  }, null, 2);
+})();
+```
+
+### TikTok Ad Copy Extraction Script
+
+```javascript
+// TikTok Ad Library - Copy + Categorization Extraction
+(function() {
+  const categoryPatterns = {
+    testimonial: [/testimonial|review|customer/i, /★{3,}/, /"[^"]{20,}"/, /\blove\b/i],
+    offer_promo: [/\d+%\s*off/i, /save\s*\$?\d+/i, /\bfree\b/i, /limited|special|deal|discount/i],
+    educational: [/\bhow to\b/i, /\d+\s*(tips|ways|steps|secrets)/i, /guide|learn|discover/i],
+    brand_awareness: [/our story|about us|since\s*(19|20)\d{2}/i],
+    product_feature: [/features?|benefits?|includes/i, /powered by|made with/i],
+    urgency_scarcity: [/ends?\s*soon|last\s*chance|limited/i, /today only|hurry/i],
+    problem_solution: [/tired of|struggling|finally|say goodbye/i, /solution|solve/i],
+    comparison: [/\bvs\.?\b/i, /compared to|unlike|better than/i]
+  };
+
+  function categorize(text) {
+    let maxScore = 0, primary = 'uncategorized';
+    const scores = {};
+    Object.entries(categoryPatterns).forEach(([cat, patterns]) => {
+      let score = 0;
+      patterns.forEach(p => { if (p.test(text)) score++; });
+      scores[cat] = score;
+      if (score > maxScore) { maxScore = score; primary = cat; }
+    });
+    return { primary, scores };
+  }
+
+  const ads = [];
+
+  document.querySelectorAll('a[href*="/ads/detail/"]').forEach(link => {
+    const container = link.closest('div[class]');
+    if (!container) return;
+
+    const text = container.innerText;
+    const adId = link.href.match(/ad_id=(\d+)/)?.[1];
+    if (!adId) return;
+
+    const lines = text.split('\n').filter(l =>
+      l.trim().length > 15 &&
+      !l.includes('First shown') &&
+      !l.includes('Last shown') &&
+      !l.includes('Unique users')
+    );
+
+    const caption = lines[0]?.trim() || '';
+    const hashtags = text.match(/#[\w\u4e00-\u9fa5]+/g) || [];
+    const mentions = text.match(/@[\w.]+/g) || [];
+    const ctaMatch = text.match(/(?:Shop Now|Learn More|Download|Sign Up|Get App|Play Game|Watch Now|Order Now|Book Now)/gi);
+    const category = categorize(text);
+
+    ads.push({
+      adId,
+      detailUrl: link.href,
+      caption: caption.substring(0, 500),
+      hashtags: [...new Set(hashtags)],
+      mentions: [...new Set(mentions)],
+      cta: ctaMatch ? ctaMatch[0] : '',
+      category: category.primary,
+      allCategoryScores: category.scores
+    });
+  });
+
+  const unique = [...new Map(ads.map(a => [a.adId, a])).values()];
+  const categoryCounts = {};
+  unique.forEach(a => { categoryCounts[a.category] = (categoryCounts[a.category] || 0) + 1; });
+
+  return JSON.stringify({
+    extractedAt: new Date().toISOString(),
+    platform: 'TikTok',
+    totalAds: unique.length,
+    categorySummary: categoryCounts,
+    ads: unique
+  }, null, 2);
+})();
+```
+
+### Google Ads Copy Extraction Script
+
+```javascript
+// Google Ads Transparency - Ad Copy Extraction
+(function() {
+  const ads = [];
+  const text = document.body.innerText;
+
+  document.querySelectorAll('div').forEach(el => {
+    const content = el.innerText;
+
+    if (content.length > 50 && content.length < 500) {
+      const lines = content.split('\n').map(l => l.trim()).filter(Boolean);
+
+      if (lines.length >= 2) {
+        const adData = {
+          headline: '',
+          displayUrl: '',
+          description: '',
+          sitelinks: [],
+          rawText: content
+        };
+
+        if (lines[0] && lines[0].length < 100) {
+          adData.headline = lines[0];
+        }
+
+        const urlLine = lines.find(l => l.match(/^[\w-]+\.(com|net|org|io)/i));
+        if (urlLine) adData.displayUrl = urlLine;
+
+        const desc = lines.filter(l => l.length > 50 && !l.match(/^[\w-]+\./)).sort((a, b) => b.length - a.length)[0];
+        if (desc) adData.description = desc;
+
+        const sitelinks = lines.filter(l => l.length > 5 && l.length < 30 && l !== adData.headline);
+        adData.sitelinks = sitelinks.slice(0, 6);
+
+        if (adData.headline || adData.description) {
+          ads.push(adData);
+        }
+      }
+    }
+  });
+
+  const unique = [...new Map(ads.map(a => [a.headline, a])).values()];
+
+  return JSON.stringify({
+    extractedAt: new Date().toISOString(),
+    platform: 'Google',
+    adsFound: unique.length,
+    ads: unique.slice(0, 30)
+  }, null, 2);
+})();
+```
+
+### Landing Page Extraction Script
+
+```javascript
+// Landing Page Analysis - Extract Conversion Elements
+(function() {
+  const data = {
+    url: window.location.href,
+    extractedAt: new Date().toISOString(),
+    title: document.title,
+    metaDescription: document.querySelector('meta[name="description"]')?.content || '',
+
+    headlines: {
+      h1: [...document.querySelectorAll('h1')].map(h => h.innerText.trim()).filter(Boolean),
+      h2: [...document.querySelectorAll('h2')].map(h => h.innerText.trim()).filter(Boolean).slice(0, 10),
+      h3: [...document.querySelectorAll('h3')].map(h => h.innerText.trim()).filter(Boolean).slice(0, 10)
+    },
+
+    ctas: { primary: [], secondary: [] },
+    forms: [],
+    trustSignals: [],
+    offers: [],
+
+    structure: {
+      hasVideo: false,
+      hasTestimonials: false,
+      hasPricing: false,
+      hasForm: false,
+      hasChatWidget: false
+    }
+  };
+
+  // Extract CTAs
+  const buttons = document.querySelectorAll('button, a.btn, a.button, [class*="cta"], input[type="submit"]');
+  buttons.forEach(btn => {
+    const text = (btn.innerText || btn.value || '').trim();
+    if (text && text.length > 2 && text.length < 50) {
+      const ctaData = { text, type: btn.tagName.toLowerCase(), href: btn.href || null };
+      if (btn.matches('[class*="primary"], [class*="cta"]') ||
+          text.match(/get started|book now|schedule|contact|free|claim/i)) {
+        data.ctas.primary.push(ctaData);
+      } else {
+        data.ctas.secondary.push(ctaData);
+      }
+    }
+  });
+
+  data.ctas.primary = [...new Map(data.ctas.primary.map(c => [c.text, c])).values()].slice(0, 5);
+  data.ctas.secondary = [...new Map(data.ctas.secondary.map(c => [c.text, c])).values()].slice(0, 10);
+
+  // Extract Forms
+  document.querySelectorAll('form').forEach(form => {
+    const fields = [...form.querySelectorAll('input, select, textarea')].map(f => ({
+      type: f.type || f.tagName.toLowerCase(),
+      name: f.name || f.placeholder || '',
+      required: f.required
+    })).filter(f => !['hidden', 'submit', 'button'].includes(f.type));
+
+    if (fields.length > 0) {
+      data.forms.push({ fieldCount: fields.length, fields: fields.slice(0, 10) });
+    }
+  });
+
+  // Detect Trust Signals
+  const pageText = document.body.innerText.toLowerCase();
+  if (pageText.match(/★{3,}|⭐{3,}|\d+(\.\d+)?\s*(stars?|rating)/i)) data.trustSignals.push('star_ratings');
+  if (pageText.match(/\d+\+?\s*(reviews?|testimonials?)/i)) data.trustSignals.push('review_count');
+  if (pageText.match(/money.?back|satisfaction\s*guarante|risk.?free/i)) data.trustSignals.push('guarantee');
+  if (pageText.match(/\d{1,3}(,\d{3})+\s*(patients?|customers?|clients?|users?)/i)) data.trustSignals.push('customer_count');
+
+  // Detect Offers
+  if (pageText.match(/\$\d+[\d,]*(\.\d{2})?/g)) data.offers.push({ type: 'price' });
+  if (pageText.match(/\d+%\s*off/gi)) data.offers.push({ type: 'discount_percent' });
+  if (pageText.match(/free\s+(consultation|exam|quote|trial|shipping)/gi)) data.offers.push({ type: 'free_offer' });
+
+  // Page Structure
+  data.structure.hasVideo = !!document.querySelector('video, iframe[src*="youtube"], iframe[src*="vimeo"]');
+  data.structure.hasTestimonials = !!pageText.match(/testimonial|what\s*(our\s*)?(patients?|customers?)\s*say/i);
+  data.structure.hasPricing = !!pageText.match(/pricing|price|cost|\$\d+|packages?/i);
+  data.structure.hasForm = data.forms.length > 0;
+  data.structure.hasChatWidget = !!document.querySelector('[class*="chat"], [class*="intercom"], [class*="drift"]');
+
+  return JSON.stringify(data, null, 2);
+})();
+```
+
+### Copy Analysis Script (Word Frequency + CTA)
+
+```javascript
+// Copy Analysis - Word Frequency + CTA Analysis
+(function(adsJson) {
+  const data = JSON.parse(adsJson);
+  const allText = data.ads.map(a => a.primaryText || a.caption || '').join(' ').toLowerCase();
+
+  const stopWords = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','may','might','can','this','that','these','those','it','its','i','you','your','we','our','they','their','he','she','him','her','from','as','all','also','just','get','now','more','out','up','so','what','when','how']);
+
+  const words = allText.match(/\b[a-z]{3,}\b/g) || [];
+  const freq = {};
+  words.forEach(w => { if (!stopWords.has(w)) freq[w] = (freq[w] || 0) + 1; });
+
+  const topWords = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 30);
+
+  // Bigrams
+  const bigrams = {};
+  for (let i = 0; i < words.length - 1; i++) {
+    if (!stopWords.has(words[i]) && !stopWords.has(words[i+1])) {
+      const phrase = `${words[i]} ${words[i+1]}`;
+      bigrams[phrase] = (bigrams[phrase] || 0) + 1;
+    }
+  }
+  const topPhrases = Object.entries(bigrams).filter(([_, c]) => c > 1).sort((a, b) => b[1] - a[1]).slice(0, 15);
+
+  // CTA Analysis
+  const ctaCounts = {};
+  data.ads.forEach(a => {
+    const cta = (a.cta || '').toLowerCase().trim();
+    if (cta) ctaCounts[cta] = (ctaCounts[cta] || 0) + 1;
+  });
+  const ctaDistribution = Object.entries(ctaCounts).sort((a, b) => b[1] - a[1]);
+
+  return JSON.stringify({
+    platform: data.platform,
+    totalAdsAnalyzed: data.totalAds || data.ads.length,
+    wordAnalysis: { topWords, topPhrases },
+    ctaAnalysis: { topCTA: ctaDistribution[0]?.[0] || 'none', distribution: ctaDistribution }
+  }, null, 2);
+})( /* PASTE ADS JSON HERE */ );
+```
+
+---
+
+## Complete Deep Dive Workflow
+
+```
+1. CREATE OUTPUT STRUCTURE
+   mkdir -p /home/claude/competitive-intel/[COMPETITOR]/{tiktok,meta,google,linkedin,landing-pages,screenshots,analysis}
+
+2. META AD LIBRARY (Full Extraction + Copy + Categorization)
+   a. Open: facebook.com/ads/library/?q=[COMPETITOR]
+   b. Wait 5 seconds
+   c. Execute auto-scroll script (load ALL ads)
+   d. Scroll to top, CAPTURE SCREENSHOT
+   e. Run META COPY EXTRACTION SCRIPT
+   f. Save JSON to meta/ads-with-copy.json
+   g. Run destination URL extraction
+   h. Save category summary to analysis/meta-categories.json
+
+3. TIKTOK AD LIBRARY (Full Extraction + Copy)
+   a. Calculate date range, open search URL
+   b. Wait, load more results
+   c. CAPTURE SCREENSHOT
+   d. Run TIKTOK COPY EXTRACTION SCRIPT
+   e. Run categorization on extracted copy
+   f. Save to tiktok/ads-with-copy.json
+
+4. GOOGLE ADS TRANSPARENCY
+   a. Open: adstransparency.google.com/?domain=[DOMAIN]
+   b. Wait, CAPTURE SCREENSHOT
+   c. Run GOOGLE COPY EXTRACTION SCRIPT
+   d. Categorize extracted ads
+   e. Save to google/ads-with-copy.json
+
+5. COPY ANALYSIS
+   a. Run WORD FREQUENCY ANALYSIS on all platforms
+   b. Run CTA PATTERN ANALYSIS
+   c. Save to analysis/copy-analysis.json
+
+6. LANDING PAGE ANALYSIS
+   a. Compile unique destination URLs from all platforms
+   b. For each URL (top 3-5 most common):
+      - Open in Chrome
+      - Wait 3-5 seconds for full load
+      - Run LANDING PAGE EXTRACTION SCRIPT
+      - Capture screenshot
+      - Save to landing-pages/[domain]-[id].json
+   c. Aggregate insights to landing-pages/landing-page-summary.json
+
+7. GENERATE COMPREHENSIVE REPORT
+   Include sections:
+   - Executive Summary (key findings)
+   - Platform Overview (ad counts, presence)
+   - Messaging Analysis: Top words/phrases
+   - Creative Mix: Category breakdown
+   - CTA Strategy: What actions competitors are driving
+   - Landing Page Strategy: Conversion approach
+   - Messaging Gaps: Categories NOT being used
+   - Sample Ad Copy: Top performing ad text
+
+8. GENERATE EXECUTIVE SUMMARY 1-PAGER
+   a. Aggregate all extracted data
+   b. Calculate key metrics
+   c. Identify top 3 strategic opportunities
+   d. Generate executive-summary.docx
+   e. Keep to ONE PAGE
+   f. Copy to /mnt/user-data/outputs/ for download
+```
 
 ---
 
@@ -101,14 +506,6 @@ Every ad is auto-tagged into one of 8 strategic categories:
 "What demographics does [Competitor] reach?"
 "Extract targeting data from [Competitor]'s TikTok ads"
 "What age groups is [Competitor] targeting?"
-"What locations does [Competitor] advertise in?"
-```
-
-### Reach Metrics
-```
-"How much reach does [Competitor] have on TikTok?"
-"What's [Competitor]'s ad impressions?"
-"Show me [Competitor]'s audience size"
 ```
 
 ### Landing Page Analysis
@@ -118,27 +515,22 @@ Every ad is auto-tagged into one of 8 strategic categories:
 "What CTAs are on [Competitor]'s landing pages?"
 "What trust signals does [Competitor] use?"
 "How many form fields does [Competitor] require?"
-"What offers appear on [Competitor]'s landing pages?"
 ```
 
 ### Screenshots & Visual Capture
 ```
 "Capture screenshots of [Competitor]'s ads"
 "Screenshot [Competitor]'s Meta ad library"
-"Save visual samples of [Competitor]'s ads"
 "Take screenshots of [Competitor]'s top ads"
-"Capture [Competitor]'s ad creative for the report"
 "Screenshot each platform for [Competitor]"
 ```
 
-### Reports with Screenshots (Word/PowerPoint)
+### Reports with Screenshots
 ```
 "Create a competitive report with screenshots for [Competitor]"
 "Build a Word doc with [Competitor]'s ad screenshots"
 "Generate a PowerPoint of [Competitor]'s advertising"
-"Make a visual competitive analysis with ad screenshots"
 "Create a presentation deck of [Competitor]'s ads"
-"Export [Competitor] analysis to Word with images"
 ```
 
 ### Executive Summaries
@@ -166,20 +558,9 @@ Every ad is auto-tagged into one of 8 strategic categories:
 
 ---
 
-## Example
+## Example Output
 
 **User:** "Full competitive analysis of HubSpot's advertising"
-
-**Process:**
-1. Extract ads from Meta Ad Library
-2. Extract ads from TikTok Ad Library
-3. Extract ads from Google Ads Transparency
-4. Categorize all ads by type
-5. Analyze messaging themes and CTAs
-6. Extract targeting data (TikTok)
-7. Capture destination URLs
-8. Analyze top landing pages
-9. Generate executive summary
 
 **Output:**
 ```
@@ -257,162 +638,164 @@ CTA: Read Case Study
 
 ---
 
-## Screenshots & Report Generation
+## Output JSON Structure
 
-### What Gets Captured
-- **Ad Library Pages** — Full-page screenshots of Meta, TikTok, Google, LinkedIn ad libraries
-- **Individual Ads** — Specific ad creative samples for reference
-- **Landing Pages** — Screenshots of competitor landing pages
-- **Organized by Platform** — Screenshots saved with platform name and timestamp
-
-### Screenshot Organization
-```
-/screenshots/
-├── meta-ads-2024-01-15.png
-├── meta-ad-sample-1.png
-├── meta-ad-sample-2.png
-├── tiktok-ads-2024-01-15.png
-├── tiktok-ad-sample-1.png
-├── google-ads-2024-01-15.png
-└── landing-page-homepage.png
-```
-
-### Report Outputs
-
-**Word Document (.docx)**
-- Executive summary with key findings
-- Screenshots embedded inline
-- Creative mix charts
-- Sample ad copy by category
-- Strategic recommendations
-
-**PowerPoint (.pptx)**
-- Title slide with competitor name
-- Platform overview with ad counts
-- Screenshot slides for each platform
-- Creative mix breakdown
-- Key opportunities slide
-- Recommended actions slide
-
-### Report Prompts
-```
-"Create a Word report on [Competitor] with screenshots"
-"Build a PowerPoint deck of [Competitor]'s ads"
-"Generate a visual competitive report for stakeholders"
-"Make a client-ready presentation of [Competitor]'s advertising"
-"Export full analysis with screenshots to Word"
-"Create a slide deck showing [Competitor]'s ad strategy"
+### Categorized Ads JSON
+```json
+{
+  "competitor": "Company Name",
+  "platform": "Meta",
+  "extractionDate": "2025-12-14",
+  "totalAds": 45,
+  "categorySummary": {
+    "offer_promo": 18,
+    "testimonial": 12,
+    "product_feature": 8,
+    "educational": 4,
+    "urgency_scarcity": 2,
+    "uncategorized": 1
+  },
+  "ads": [
+    {
+      "primaryText": "Transform your smile with our award-winning dental implants...",
+      "cta": "Book Now",
+      "hashtags": ["#DentalImplants"],
+      "category": "testimonial",
+      "categoryConfidence": "high",
+      "allCategoryScores": {
+        "testimonial": 3,
+        "product_feature": 1,
+        "offer_promo": 0
+      }
+    }
+  ]
+}
 ```
 
-### What's Included in Reports
-
-| Section | Word | PowerPoint |
-|---------|------|------------|
-| Executive Summary | ✅ | ✅ |
-| Platform Screenshots | ✅ Embedded | ✅ Full slides |
-| Ad Copy Samples | ✅ | ✅ |
-| Creative Mix Chart | ✅ | ✅ |
-| Targeting Data | ✅ | ✅ |
-| Landing Page Analysis | ✅ | ✅ |
-| Gap Analysis | ✅ | ✅ |
-| Recommendations | ✅ | ✅ |
-
----
-
-## What Gets Extracted
-
-### Ad Copy Elements
-| Element | Meta | TikTok | Google | LinkedIn |
-|---------|------|--------|--------|----------|
-| Primary text/body | ✅ | ✅ | ✅ | ✅ |
-| Headlines | ✅ | N/A | ✅ | ✅ |
-| Descriptions | ✅ | ✅ | ✅ | ✅ |
-| CTAs | ✅ | ✅ | ✅ | ✅ |
-| Hashtags | ✅ | ✅ | N/A | ✅ |
-| @Mentions | ❌ | ✅ | N/A | ❌ |
-
-### Targeting Data (TikTok)
-- Age ranges
-- Gender targeting
-- Geographic regions
-- Audience size estimates
-- Unique user reach
-
-### Landing Page Elements
-- Page title and meta description
-- H1, H2, H3 headlines
-- Primary and secondary CTAs
-- Form fields and friction level
-- Trust signals (reviews, badges, guarantees)
-- Offers (pricing, discounts, free trials)
-- Page features (video, testimonials, chat widget)
-
----
-
-## Executive Summary Format
-
-When you request an executive summary, you get:
-
-```
-COMPETITIVE INTELLIGENCE: [COMPETITOR]
-======================================
-
-KEY FINDING
------------
-[One-sentence insight about their strategy]
-
-ADVERTISING FOOTPRINT
----------------------
-[Platform presence and ad counts]
-
-MESSAGING STRATEGY
-------------------
-[Top keywords, angles, and CTAs]
-
-CREATIVE MIX
-------------
-[Percentage breakdown by category]
-
-LANDING PAGE INSIGHTS
----------------------
-[Conversion strategy, form friction, trust signals]
-
-STRATEGIC OPPORTUNITIES
------------------------
-[3-5 gaps you can exploit]
-
-RECOMMENDED ACTIONS
--------------------
-[Specific next steps]
+### Landing Page Analysis JSON
+```json
+{
+  "url": "https://example.com/landing",
+  "title": "Get Your Free Consultation",
+  "headlines": {
+    "h1": ["Transform Your Smile Today"],
+    "h2": ["Why Choose Us", "Our Process"]
+  },
+  "ctas": {
+    "primary": [{"text": "Book Free Consultation", "type": "button"}],
+    "secondary": [{"text": "Learn More", "type": "a"}]
+  },
+  "forms": [{"fieldCount": 4, "fields": ["name", "email", "phone", "message"]}],
+  "trustSignals": ["star_ratings", "review_count", "guarantee"],
+  "offers": [{"type": "free_offer"}],
+  "structure": {
+    "hasVideo": true,
+    "hasTestimonials": true,
+    "hasPricing": false,
+    "hasForm": true,
+    "hasChatWidget": true
+  }
+}
 ```
 
 ---
 
-## Common Workflows
+## Executive Summary Template
 
-### Campaign Planning
-1. "Extract ads from our top 3 competitors"
-2. "What messaging themes do they all use?"
-3. "Identify gaps none of them are covering"
-4. "Generate ad angle recommendations"
+```markdown
+# Competitive Intelligence: [COMPETITOR NAME]
+**Analysis Date:** [DATE]
 
-### Creative Development
-1. "Show me [Competitor]'s best-performing ad types"
-2. "What copy formulas do they use?"
-3. "Extract their testimonial ads for reference"
-4. "What CTAs convert for them?"
+---
 
-### Stakeholder Reporting
-1. "Full competitive analysis of [Competitor]"
-2. "Generate executive summary"
-3. "Highlight top 3 opportunities"
-4. "Export findings for presentation"
+## Key Finding
+[COMPETITOR] focuses heavily on [PRIMARY THEME] messaging, with [X]% of ads
+promoting [TOP CATEGORY]. **Key opportunity:** [GAP DESCRIPTION].
 
-### Landing Page Optimization
-1. "Analyze [Competitor]'s landing pages"
-2. "What trust signals do they use?"
-3. "How many form fields do they require?"
-4. "What offers do they promote?"
+---
+
+## Advertising Footprint
+
+| Platform | Active Ads | Primary Focus |
+|----------|------------|---------------|
+| Meta | [X] | [Focus] |
+| Google | [X] | [Focus] |
+| TikTok | [X] | [Focus] |
+| LinkedIn | [X] | [Focus] |
+
+---
+
+## Messaging Strategy
+**Top Keywords:** [word1], [word2], [word3]
+**Dominant CTA:** "[CTA]" ([X]% of ads)
+
+---
+
+## Creative Mix
+
+| Category | % of Ads |
+|----------|----------|
+| Offer/Promotional | [X]% |
+| Testimonial | [X]% |
+| Educational | [X]% |
+| Brand Awareness | [X]% |
+
+---
+
+## Strategic Opportunities
+1. [Opportunity 1]
+2. [Opportunity 2]
+3. [Opportunity 3]
+
+---
+
+## Recommended Actions
+1. [Action 1]
+2. [Action 2]
+3. [Action 3]
+```
+
+---
+
+## Files Generated
+
+```
+/home/claude/competitive-intel/[COMPETITOR]/
+├── screenshots/
+│   └── [platform screenshots]
+├── meta/
+│   ├── ads-with-copy.json
+│   └── destination-urls.json
+├── tiktok/
+│   ├── ads-with-copy.json
+│   └── video-urls.json
+├── google/
+│   └── ads-with-copy.json
+├── landing-pages/
+│   ├── [domain]-page1.json
+│   └── landing-page-summary.json
+├── analysis/
+│   ├── copy-analysis.json
+│   ├── category-summary.json
+│   └── messaging-insights.md
+├── executive-summary.docx
+└── report.docx
+```
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| "Chrome is not running" error | Enable JavaScript: View → Developer → Allow JavaScript from Apple Events |
+| Copy extraction returns empty | Increase wait time; ensure ads are loaded; try different selector |
+| Wrong categorization | Review scores in output; category uses text patterns |
+| Missing CTAs | Not all ads have visible CTAs; check if button text is in image |
+| LinkedIn not loading | Log into LinkedIn in Chrome first |
+| Landing page blocked | Some sites block automated access; try manual screenshot |
+| Landing page dynamic content | Increase wait time; SPAs need longer to render |
+| Executive summary too long | Focus on top 3 insights per section; use bullet points |
 
 ---
 
@@ -435,24 +818,4 @@ RECOMMENDED ACTIONS
 
 ---
 
-## Output Formats
-
-- **Structured JSON** — Full data for further analysis
-- **Executive Summary** — 1-page stakeholder report
-- **Category Breakdown** — Percentage mix by ad type
-- **Messaging Report** — Top keywords, phrases, CTAs
-- **Landing Page Analysis** — Conversion element breakdown
-- **Gap Analysis** — Opportunities vs competitor
-- **Screenshots** — Visual documentation
-
----
-
-## Tips for Success
-
-1. **Start broad** — Extract everything first, then filter
-2. **Check TikTok** — Best targeting and reach data available
-3. **Analyze landing pages** — Where they send traffic matters
-4. **Look for patterns** — One ad is an idea; ten similar ads is a strategy
-5. **Mind the gaps** — What's missing is often the opportunity
-6. **Request executive summary** — Get stakeholder-ready output instantly
-7. **Compare platforms** — Strategy often differs by channel
+Final reports copied to `/mnt/user-data/outputs/` for download.

@@ -1,4 +1,4 @@
-# Ad Tool - Competitive Ads Extractor
+# WEO Ad Tool - Competitive Ads Extractor
 
 A Claude Desktop skill for extracting competitor ads from Meta, TikTok, Google, and LinkedIn Ad Libraries.
 

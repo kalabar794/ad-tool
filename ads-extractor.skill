@@ -1,0 +1,147 @@
+{
+  "name": "ads-extractor",
+  "version": "1.0.0",
+  "description": "A skill for extracting and analyzing advertisements from various sources including web pages, documents, and media files",
+  "author": "ad-tool",
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "skills": {
+    "extract-ads": {
+      "description": "Extract advertisements from a given source (URL, file, or text)",
+      "parameters": {
+        "source": {
+          "type": "string",
+          "required": true,
+          "description": "The source to extract ads from (URL, file path, or raw text)"
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": ["url", "file", "text"],
+          "default": "url",
+          "description": "Type of the source input"
+        },
+        "outputFormat": {
+          "type": "string",
+          "enum": ["json", "csv", "text"],
+          "default": "json",
+          "description": "Output format for extracted ads"
+        },
+        "includeMetadata": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include metadata like timestamps, positions, and confidence scores"
+        }
+      }
+    },
+    "analyze-ad": {
+      "description": "Analyze a single advertisement for content, targeting, and effectiveness",
+      "parameters": {
+        "adContent": {
+          "type": "string",
+          "required": true,
+          "description": "The advertisement content to analyze"
+        },
+        "analysisType": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["sentiment", "targeting", "keywords", "cta", "compliance"]
+          },
+          "default": ["sentiment", "keywords"],
+          "description": "Types of analysis to perform"
+        }
+      }
+    },
+    "filter-ads": {
+      "description": "Filter extracted ads based on criteria",
+      "parameters": {
+        "ads": {
+          "type": "array",
+          "required": true,
+          "description": "Array of extracted advertisements"
+        },
+        "filters": {
+          "type": "object",
+          "properties": {
+            "categories": {
+              "type": "array",
+              "description": "Filter by ad categories"
+            },
+            "dateRange": {
+              "type": "object",
+              "properties": {
+                "start": { "type": "string", "format": "date" },
+                "end": { "type": "string", "format": "date" }
+              }
+            },
+            "minConfidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Minimum confidence score"
+            }
+          }
+        }
+      }
+    },
+    "export-ads": {
+      "description": "Export extracted ads to various formats",
+      "parameters": {
+        "ads": {
+          "type": "array",
+          "required": true,
+          "description": "Array of ads to export"
+        },
+        "format": {
+          "type": "string",
+          "enum": ["json", "csv", "xlsx", "pdf"],
+          "default": "json",
+          "description": "Export format"
+        },
+        "outputPath": {
+          "type": "string",
+          "description": "Path to save the exported file"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0",
+    "natural": "^6.10.0",
+    "compromise": "^14.10.0",
+    "csv-stringify": "^6.4.0",
+    "xlsx": "^0.18.5",
+    "pdfkit": "^0.14.0",
+    "puppeteer": "^21.0.0"
+  },
+  "config": {
+    "maxConcurrentRequests": 5,
+    "requestTimeout": 30000,
+    "retryAttempts": 3,
+    "cacheEnabled": true,
+    "cacheTTL": 3600
+  },
+  "patterns": {
+    "adSelectors": [
+      "[class*='ad-']",
+      "[class*='advertisement']",
+      "[class*='sponsored']",
+      "[id*='ad-']",
+      "[data-ad]",
+      "[data-advertisement]",
+      "ins.adsbygoogle",
+      ".dfp-ad",
+      "[class*='promo']",
+      "[class*='banner']"
+    ],
+    "adIndicators": [
+      "sponsored",
+      "advertisement",
+      "ad",
+      "promoted",
+      "paid partnership",
+      "affiliate"
+    ]
+  }
+}

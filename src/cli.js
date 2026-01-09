@@ -8,7 +8,6 @@
 const { Command } = require('commander');
 const AdsExtractorSkill = require('./index');
 const fs = require('fs').promises;
-const path = require('path');
 
 const program = new Command();
 

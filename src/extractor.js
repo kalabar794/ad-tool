@@ -56,7 +56,7 @@ class AdsExtractor {
         throw new Error(`Unknown source type: ${sourceType}`);
     }
 
-    const ads = this.parseContent(content, options);
+    const ads = this.parseContent(content);
 
     if (options.includeMetadata) {
       return ads.map((ad, index) => ({
@@ -72,16 +72,67 @@ class AdsExtractor {
   }
 
   /**
+   * Validate URL to prevent SSRF attacks
+   * @private
+   */
+  validateUrl(urlString) {
+    try {
+      const parsed = new URL(urlString);
+
+      // Only allow http and https protocols
+      if (!['http:', 'https:'].includes(parsed.protocol)) {
+        throw new Error('Only HTTP and HTTPS protocols are allowed');
+      }
+
+      // Block private/internal IPs
+      const hostname = parsed.hostname.toLowerCase();
+      const blockedPatterns = [
+        /^localhost$/i,
+        /^127\./,
+        /^10\./,
+        /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
+        /^192\.168\./,
+        /^169\.254\./,
+        /^0\./,
+        /^\[::1\]$/,
+        /^\[fc/i,
+        /^\[fd/i,
+        /^\[fe80:/i,
+        /^metadata\.google/i,
+        /^169\.254\.169\.254/
+      ];
+
+      for (const pattern of blockedPatterns) {
+        if (pattern.test(hostname)) {
+          throw new Error('Access to internal/private addresses is not allowed');
+        }
+      }
+
+      return parsed.href;
+    } catch (error) {
+      if (error.message.includes('Invalid URL')) {
+        throw new Error('Invalid URL format');
+      }
+      throw error;
+    }
+  }
+
+  /**
    * Fetch content from URL
    * @private
    */
-  async fetchUrl(url) {
+  async fetchUrl(targetUrl) {
     try {
-      const response = await axios.get(url, {
+      // Validate URL before fetching (SSRF protection)
+      const validatedUrl = this.validateUrl(targetUrl);
+
+      const response = await axios.get(validatedUrl, {
         timeout: this.config.config?.requestTimeout || 30000,
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; AdsExtractor/1.0)'
-        }
+        },
+        maxRedirects: 5,
+        validateStatus: (status) => status < 400
       });
       return response.data;
     } catch (error) {
@@ -90,14 +141,24 @@ class AdsExtractor {
   }
 
   /**
-   * Read content from file
+   * Read content from file with path traversal protection
    * @private
    */
   async readFile(filePath) {
     try {
-      const absolutePath = path.resolve(filePath);
+      const cwd = process.cwd();
+      const absolutePath = path.resolve(cwd, filePath);
+
+      // Path traversal protection: ensure resolved path is within cwd
+      if (!absolutePath.startsWith(cwd + path.sep) && absolutePath !== cwd) {
+        throw new Error('Access denied: path traversal attempt detected');
+      }
+
       return await fs.readFile(absolutePath, 'utf-8');
     } catch (error) {
+      if (error.message.includes('path traversal')) {
+        throw error;
+      }
       throw new Error(`Failed to read file: ${error.message}`);
     }
   }
@@ -106,7 +167,7 @@ class AdsExtractor {
    * Parse HTML content and extract ads
    * @private
    */
-  parseContent(content, options = {}) {
+  parseContent(content) {
     const ads = [];
 
     // Check if content is HTML

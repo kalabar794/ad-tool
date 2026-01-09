@@ -3,11 +3,18 @@ name: competitive-ads-extractor
 description: Extract competitor ads from Meta, TikTok, Google, and LinkedIn Ad Libraries. Analyze ad copy, targeting, creative categories, landing pages, and generate reports with screenshots.
 ---
 
-# Competitive Ads Extractor v3.3
+# Competitive Ads Extractor v3.4
 
-**Enterprise-grade multi-platform competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with **ad copy extraction**, **creative categorization**, **landing page analysis**, **executive summaries**, targeting analysis, visual screenshots, and comprehensive reporting.
+**Enterprise-grade multi-platform competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with **video/hook analysis**, **ad copy extraction**, **creative categorization**, **landing page analysis**, **executive summaries**, targeting analysis, visual screenshots, and comprehensive reporting.
 
-## What's New in v3.3
+## What's New in v3.4
+- **Video Hook Analysis** - Identify the hook (first 3-5 seconds) in TikTok video ads and categorize hook type
+- **Video Format Detection** - Auto-categorize video ads: UGC, talking head, product demo, before/after, etc.
+- **Caption Extraction** - Pull video captions and on-screen text from TikTok ads
+- **Hook Pattern Report** - Analyze which hook types competitors use most frequently
+- **UGC vs Polished Scoring** - Detect if ads are lo-fi/authentic vs studio-produced
+
+## What's in v3.3
 - **Executive Summary 1-Pager** - Auto-generate executive-ready PDF/DOCX summaries with key findings, strategic recommendations, and visual charts
 - **Landing Page Analysis** - Extract and analyze competitor landing pages linked from ads (headlines, CTAs, offers, page structure, conversion elements)
 - **Cross-Platform Landing Page Patterns** - Identify where competitors send traffic and what conversion strategies they use
@@ -71,6 +78,40 @@ Every ad is auto-tagged into one of 8 strategic categories:
 | **Urgency/Scarcity** | Time pressure, limited availability | "ends soon", "last chance", "only X left", "today only", "hurry" |
 | **Problem/Solution** | Pain point + resolution | "tired of", "struggling with", "finally", "say goodbye to", "solution" |
 | **Comparison** | Us vs them, competitor callouts | "vs", "compared to", "unlike", "better than", "switch from" |
+
+---
+
+## Video Format Categories
+
+Video ads are auto-categorized into one of 8 format types:
+
+| Format | Description | Detection Signals |
+|--------|-------------|-------------------|
+| **UGC** | User-generated content, authentic/amateur feel | Selfie-style, shaky cam, casual setting, personal testimonial |
+| **Talking Head** | Person speaking directly to camera | Single speaker, direct address, educational tone |
+| **Product Demo** | Showing product in action | Product focus, hands showing usage, features highlighted |
+| **Before/After** | Transformation comparison | Split screen, "before", "after", transformation words |
+| **Unboxing** | Opening/revealing product | Package opening, first impressions, reveal moment |
+| **Tutorial** | Step-by-step instructions | Numbered steps, "how to", process demonstration |
+| **Lifestyle** | Product in real-life context | Aspirational setting, daily use, emotional appeal |
+| **Studio/Polished** | Professional production | Clean backgrounds, multiple angles, graphics/effects |
+
+---
+
+## Hook Types (First 3-5 Seconds)
+
+Video hooks are categorized by opening strategy:
+
+| Hook Type | Description | Example Patterns |
+|-----------|-------------|------------------|
+| **Question** | Opens with a question | "Have you ever...?", "What if...?", "Did you know...?" |
+| **Bold Claim** | Strong statement to grab attention | "This changed my life", "The #1 mistake", "Finally..." |
+| **Problem** | Starts with pain point | "Tired of...?", "Struggling with...?", "Stop doing..." |
+| **Result First** | Shows outcome immediately | Before/after reveal, end result shown first |
+| **Pattern Interrupt** | Unexpected visual/audio | Unusual action, loud sound, visual surprise |
+| **Social Proof** | Leads with credibility | "10M views", "Viral", "Everyone's talking about" |
+| **Direct Address** | Speaks to specific audience | "Hey [audience]", "If you're a...", "POV: you're..." |
+| **Curiosity Gap** | Creates information gap | "Wait for it...", "You won't believe...", "Secret..." |
 
 ---
 
@@ -217,6 +258,139 @@ Every ad is auto-tagged into one of 8 strategic categories:
     platform: 'TikTok',
     totalAds: unique.length,
     categorySummary: categoryCounts,
+    ads: unique
+  }, null, 2);
+})();
+```
+
+### TikTok Video Hook Analysis Script
+
+```javascript
+// TikTok Ad Library - Video Hook + Format Analysis
+(function() {
+  // Hook type patterns (detected from caption/first line)
+  const hookPatterns = {
+    question: [/^(have you|do you|did you|what if|why do|how do|ever wonder|want to)/i, /\?$/],
+    bold_claim: [/changed my life|game.?changer|finally|the secret|you need|must have|#1|best/i],
+    problem: [/^(tired of|sick of|struggling|stop|don't|can't stand|hate when)/i],
+    result_first: [/^(before|after|results|transformation|went from|lost \d+|gained \d+)/i],
+    pattern_interrupt: [/^(wait|stop|hold on|pov:|ok but|no way)/i],
+    social_proof: [/viral|million|views|everyone|trending|famous|went viral/i],
+    direct_address: [/^(hey|attention|calling all|if you're a|this is for)/i],
+    curiosity_gap: [/wait for it|you won't believe|secret|hack|trick|nobody knows/i]
+  };
+
+  // Video format patterns
+  const formatPatterns = {
+    ugc: [/authentic|real|honest|my experience|i tried|unsponsored/i, /@\w+/],
+    talking_head: [/let me tell you|here's the thing|listen|i'm going to/i],
+    product_demo: [/watch this|how it works|let me show|using this|applying/i],
+    before_after: [/before|after|transformation|results|day \d+|week \d+/i],
+    unboxing: [/unbox|opening|first impressions|just arrived|got this/i],
+    tutorial: [/step \d|how to|tutorial|guide|easy way|simple trick/i],
+    lifestyle: [/daily routine|morning|night routine|day in|aesthetic/i],
+    studio_polished: [/professional|studio|brand|official/i]
+  };
+
+  function detectHook(text) {
+    const firstLine = text.split(/[.\n!?]/)[0] || '';
+    let maxScore = 0, hookType = 'unknown';
+
+    Object.entries(hookPatterns).forEach(([type, patterns]) => {
+      let score = 0;
+      patterns.forEach(p => { if (p.test(firstLine) || p.test(text.substring(0, 100))) score++; });
+      if (score > maxScore) { maxScore = score; hookType = type; }
+    });
+
+    return { type: hookType, confidence: maxScore > 1 ? 'high' : maxScore > 0 ? 'medium' : 'low', firstLine: firstLine.substring(0, 80) };
+  }
+
+  function detectFormat(text) {
+    let maxScore = 0, format = 'unknown';
+    const scores = {};
+
+    Object.entries(formatPatterns).forEach(([fmt, patterns]) => {
+      let score = 0;
+      patterns.forEach(p => { if (p.test(text)) score++; });
+      scores[fmt] = score;
+      if (score > maxScore) { maxScore = score; format = fmt; }
+    });
+
+    // Default to UGC if low scores (most TikTok ads are UGC-style)
+    if (maxScore === 0) format = 'ugc';
+
+    return { format, confidence: maxScore > 1 ? 'high' : maxScore > 0 ? 'medium' : 'low', scores };
+  }
+
+  function detectProductionStyle(text) {
+    const ugcSignals = ['pov', 'storytime', 'grwm', 'ootd', 'real', 'honest', 'no filter', 'unedited'];
+    const polishedSignals = ['professional', 'studio', 'cinematic', 'brand', 'ad', 'sponsored'];
+
+    let ugcScore = 0, polishedScore = 0;
+    ugcSignals.forEach(s => { if (text.toLowerCase().includes(s)) ugcScore++; });
+    polishedSignals.forEach(s => { if (text.toLowerCase().includes(s)) polishedScore++; });
+
+    return {
+      style: ugcScore > polishedScore ? 'ugc_authentic' : polishedScore > ugcScore ? 'studio_polished' : 'mixed',
+      ugcScore,
+      polishedScore
+    };
+  }
+
+  const ads = [];
+
+  document.querySelectorAll('a[href*="/ads/detail/"]').forEach(link => {
+    const container = link.closest('div[class]');
+    if (!container) return;
+
+    const text = container.innerText;
+    const adId = link.href.match(/ad_id=(\d+)/)?.[1];
+    if (!adId) return;
+
+    const lines = text.split('\n').filter(l => l.trim().length > 10);
+    const caption = lines.find(l => l.length > 20 && !l.includes('First shown')) || '';
+
+    const hook = detectHook(caption);
+    const format = detectFormat(text);
+    const production = detectProductionStyle(text);
+
+    ads.push({
+      adId,
+      detailUrl: link.href,
+      caption: caption.substring(0, 300),
+      hook: hook,
+      videoFormat: format.format,
+      formatConfidence: format.confidence,
+      productionStyle: production.style,
+      isUGC: production.style === 'ugc_authentic' || format.format === 'ugc'
+    });
+  });
+
+  const unique = [...new Map(ads.map(a => [a.adId, a])).values()];
+
+  // Aggregate stats
+  const hookCounts = {};
+  const formatCounts = {};
+  let ugcCount = 0;
+
+  unique.forEach(a => {
+    hookCounts[a.hook.type] = (hookCounts[a.hook.type] || 0) + 1;
+    formatCounts[a.videoFormat] = (formatCounts[a.videoFormat] || 0) + 1;
+    if (a.isUGC) ugcCount++;
+  });
+
+  return JSON.stringify({
+    extractedAt: new Date().toISOString(),
+    platform: 'TikTok',
+    analysisType: 'video_hook_analysis',
+    totalAds: unique.length,
+    summary: {
+      hookTypes: hookCounts,
+      videoFormats: formatCounts,
+      ugcPercentage: unique.length > 0 ? Math.round((ugcCount / unique.length) * 100) : 0,
+      topHook: Object.entries(hookCounts).sort((a,b) => b[1] - a[1])[0]?.[0] || 'unknown',
+      topFormat: Object.entries(formatCounts).sort((a,b) => b[1] - a[1])[0]?.[0] || 'unknown'
+    },
     ads: unique
   }, null, 2);
 })();
@@ -500,6 +674,18 @@ Every ad is auto-tagged into one of 8 strategic categories:
 "What's [Competitor]'s creative mix?"
 ```
 
+### Video & Hook Analysis
+```
+"Analyze [Competitor]'s TikTok video hooks"
+"What hook types does [Competitor] use?"
+"Show me [Competitor]'s UGC vs polished ads"
+"What video formats is [Competitor] running?"
+"Extract [Competitor]'s top-performing hooks"
+"What percentage of [Competitor]'s ads are UGC?"
+"Find [Competitor]'s before/after videos"
+"Show me [Competitor]'s talking head ads"
+```
+
 ### Targeting Data
 ```
 "Who is [Competitor] targeting?"
@@ -610,6 +796,30 @@ LANDING PAGE STRATEGY
 • Trust signals: G2 badges, customer logos, "150,000+ customers"
 • Offers: Free forever tier, no credit card required
 
+VIDEO HOOK ANALYSIS (TikTok)
+----------------------------
+Hook Types Used:
+• Question hooks: 35% ("Have you tried...?", "Did you know...?")
+• Bold claim: 28% ("This changed everything", "The #1 tool")
+• Problem hooks: 18% ("Tired of messy spreadsheets?")
+• Direct address: 12% ("Hey marketers!", "If you're in sales...")
+• Curiosity gap: 7% ("Wait for it...")
+
+Video Formats:
+• Talking head: 45%
+• Product demo: 30%
+• UGC/authentic: 20%
+• Tutorial: 5%
+
+Production Style:
+• UGC/Authentic: 65%
+• Studio/Polished: 35%
+
+Top Performing Hook Examples:
+1. "Stop using spreadsheets for your CRM" (problem hook)
+2. "The free tool that replaced our $500/mo software" (bold claim)
+3. "POV: You just discovered HubSpot" (pattern interrupt)
+
 COMPETITIVE GAPS (OPPORTUNITIES)
 --------------------------------
 ✗ Heavy educational focus — opportunity for more direct offers
@@ -667,6 +877,51 @@ CTA: Read Case Study
         "product_feature": 1,
         "offer_promo": 0
       }
+    }
+  ]
+}
+```
+
+### Video Hook Analysis JSON
+```json
+{
+  "competitor": "Company Name",
+  "platform": "TikTok",
+  "analysisType": "video_hook_analysis",
+  "extractionDate": "2025-12-14",
+  "totalAds": 43,
+  "summary": {
+    "hookTypes": {
+      "question": 15,
+      "bold_claim": 12,
+      "problem": 8,
+      "direct_address": 5,
+      "curiosity_gap": 3
+    },
+    "videoFormats": {
+      "talking_head": 19,
+      "product_demo": 13,
+      "ugc": 8,
+      "tutorial": 3
+    },
+    "ugcPercentage": 65,
+    "topHook": "question",
+    "topFormat": "talking_head"
+  },
+  "ads": [
+    {
+      "adId": "12345678",
+      "detailUrl": "https://library.tiktok.com/ads/detail/?ad_id=12345678",
+      "caption": "Have you tried this CRM hack? It saves me 2 hours a day...",
+      "hook": {
+        "type": "question",
+        "confidence": "high",
+        "firstLine": "Have you tried this CRM hack?"
+      },
+      "videoFormat": "talking_head",
+      "formatConfidence": "medium",
+      "productionStyle": "ugc_authentic",
+      "isUGC": true
     }
   ]
 }

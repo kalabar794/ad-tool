@@ -1,6 +1,6 @@
-# WEO Ad Tool - Competitive Ads Extractor v3.3
+# WEO Ad Tool - Competitive Ads Extractor v3.4
 
-**Enterprise-grade competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with full ad copy extraction, creative categorization, landing page analysis, and executive-ready reports.
+**Enterprise-grade competitive ad intelligence.** Extract ads from Meta, TikTok, Google, and LinkedIn with video/hook analysis, ad copy extraction, creative categorization, landing page analysis, and executive-ready reports.
 
 ---
 
@@ -14,25 +14,31 @@ That's it. Start asking.
 
 ---
 
-## What's New in v3.3
+## What's New in v3.4
 
-- **Executive Summary 1-Pager** — Auto-generate stakeholder-ready reports with key findings and recommendations
-- **Landing Page Analysis** — Extract CTAs, forms, trust signals, and conversion elements from competitor landing pages
-- **Ad Copy Extraction** — Pull actual headlines, body text, CTAs, and hashtags from ads
-- **Creative Categorization** — Auto-tag every ad into 8 strategic categories
-- **Copy Analysis** — Word frequency, CTA patterns, and messaging theme detection
-- **Visual Screenshots** — Capture ad library pages for documentation and reports
+- **Video Hook Analysis** — Identify hook types (question, bold claim, problem, etc.) in TikTok video ads
+- **Video Format Detection** — Auto-categorize: UGC, talking head, product demo, before/after, tutorial
+- **UGC vs Polished Scoring** — Detect if ads are lo-fi/authentic vs studio-produced
+- **Hook Pattern Reports** — See which hook strategies competitors use most
+
+## What's in v3.3
+
+- **Executive Summary 1-Pager** — Auto-generate stakeholder-ready reports
+- **Landing Page Analysis** — Extract CTAs, forms, trust signals from landing pages
+- **Ad Copy Extraction** — Pull headlines, body text, CTAs, hashtags
+- **Creative Categorization** — Auto-tag ads into 8 strategic categories
+- **Copy Analysis** — Word frequency, CTA patterns, messaging themes
 
 ---
 
 ## Platform Support
 
-| Platform | Ad Copy | Categories | Targeting | Screenshots | Landing Pages |
-|----------|---------|------------|-----------|-------------|---------------|
-| **Meta** | ✅ Full | ✅ Auto | ⚠️ Limited | ✅ | ✅ |
-| **TikTok** | ✅ Full | ✅ Auto | ✅ Full | ✅ | ✅ |
-| **Google** | ✅ Full | ✅ Auto | ⚠️ Region | ✅ | ✅ |
-| **LinkedIn** | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial | ✅ | ⚠️ |
+| Platform | Ad Copy | Categories | Video Hooks | Targeting | Landing Pages |
+|----------|---------|------------|-------------|-----------|---------------|
+| **Meta** | ✅ Full | ✅ Auto | ❌ N/A | ⚠️ Limited | ✅ |
+| **TikTok** | ✅ Full | ✅ Auto | ✅ Full | ✅ Full | ✅ |
+| **Google** | ✅ Full | ✅ Auto | ❌ N/A | ⚠️ Region | ✅ |
+| **LinkedIn** | ⚠️ Partial | ⚠️ Partial | ❌ N/A | ⚠️ Partial | ⚠️ |
 
 ---
 
@@ -41,10 +47,10 @@ That's it. Start asking.
 | Ask Claude... | Get... |
 |---------------|--------|
 | *"What ads is Nike running on Meta?"* | Every active ad with copy, CTAs, and targeting |
-| *"Analyze HubSpot's TikTok strategy"* | Full breakdown of video ads, messaging, and reach |
+| *"Analyze HubSpot's TikTok hooks"* | Hook types, video formats, UGC vs polished breakdown |
 | *"Compare Salesforce vs HubSpot ads"* | Side-by-side competitive analysis |
 | *"Create an executive summary"* | 1-page stakeholder-ready PDF/DOCX report |
-| *"Analyze competitor's landing pages"* | CTAs, forms, trust signals, conversion elements |
+| *"What video formats does [Competitor] use?"* | UGC, talking head, product demo, tutorial breakdown |
 | *"What's their creative mix?"* | Category breakdown (testimonial, promo, educational...) |
 
 ---
@@ -82,6 +88,12 @@ That's it. Start asking.
 - CTA patterns and distribution
 - Messaging themes and angles
 - Creative mix breakdown
+
+### Video Hook Analysis (TikTok)
+- **Hook Types** — Question, bold claim, problem, result-first, pattern interrupt, social proof, direct address, curiosity gap
+- **Video Formats** — UGC, talking head, product demo, before/after, unboxing, tutorial, lifestyle, studio/polished
+- **UGC Detection** — Identify authentic vs studio-produced content
+- **Hook Pattern Reports** — See which hooks competitors use most
 
 ### Landing Page Analysis
 - Page headlines (H1, H2, H3)
@@ -129,6 +141,15 @@ That's it. Start asking.
 "Who is [Competitor] targeting on TikTok?"
 "What demographics does [Competitor] reach?"
 "What age groups is [Competitor] targeting?"
+```
+
+### Video & Hook Analysis
+```
+"Analyze [Competitor]'s TikTok video hooks"
+"What hook types does [Competitor] use?"
+"Show me [Competitor]'s UGC vs polished ads"
+"What video formats is [Competitor] running?"
+"What percentage of ads are UGC style?"
 ```
 
 ### Landing Pages
@@ -189,6 +210,20 @@ DOMINANT CTAs
 • "Get started free" - 45%
 • "Start free trial" - 25%
 • "Learn more" - 18%
+
+VIDEO HOOK ANALYSIS (TikTok)
+----------------------------
+Hook Types:
+• Question: 35% ("Have you tried...?")
+• Bold claim: 28% ("This changed everything")
+• Problem: 18% ("Tired of spreadsheets?")
+
+Video Formats:
+• Talking head: 45%
+• Product demo: 30%
+• UGC: 20%
+
+UGC vs Polished: 65% authentic / 35% studio
 
 COMPETITIVE GAPS (OPPORTUNITIES)
 --------------------------------
